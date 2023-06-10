@@ -5,8 +5,8 @@ while True:
     choice = input("Выбор: ")
     if choice == "1":
         nc.notes_add()
-    # elif choice == "2":
-    #     edit_note()
+    elif choice == "2":
+        nc.notes_edit()
     elif choice == "3":
         nc.notes_del()
     elif choice == "4":

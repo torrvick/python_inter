@@ -38,5 +38,21 @@ def notes_list():
     print("")
     for note in notes:
         print(f"ID: {note['id']}, Заголовок: {note['title']}, Время: {note['timestamp']}")
+        
+def notes_edit():
+    note_id = int(input("ID заметки: "))
+    for note in notes:
+        if note["id"] == note_id:
+            title = input("Новый заголовок (пустой ввод - оставить без изменений): ")
+            if title:
+                note["title"] = title
+            body = input("Новый текст заметки (пустой ввод - оставить без изменений): ")
+            if body:
+                note["body"] = body
+            note["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            notes_save(notes)
+            print("\nЗаметка отредактирована")
+            return
+    print("\nЗаметка не найдена")
 
 notes = notes_load()
