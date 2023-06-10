@@ -52,7 +52,7 @@ def notes_edit():
             body = input("Новый текст заметки (пустой ввод - оставить без изменений): ")
             if body:
                 note["body"] = body
-            note["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            note["timestamp"] = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
             notes_save(notes)
             print("\nЗаметка отредактирована")
             return
@@ -65,5 +65,20 @@ def notes_view():
             print(f"Заголовок: {note['title']}\nТекст: {note['body']}\nВремя: {note['timestamp']}")
             return
     print("\nЗаметка не найдена")
+    
+def notes_filter_bydate():
+    date_str = input("Дата (ДД-ММ-ГГГГ): ")
+    try:
+        date = datetime.datetime.strptime(date_str, "%d-%m-%Y")
+    except ValueError:
+        print("\nНеверный формат даты")
+        return
+    filtered_notes = [note for note in notes if datetime.datetime.strptime(note["timestamp"], "%d-%m-%Y %H:%M:%S").date() == date.date()]
+    if filtered_notes:
+        print("")
+        for note in filtered_notes:
+            print(f"ID: {note['id']}, Заголовок: {note['title']}, Время: {note['timestamp']}")
+    else:
+        print("\nНет заметок от этой даты")
 
 notes = notes_load()

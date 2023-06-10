@@ -13,8 +13,8 @@ while True:
         nc.notes_list()
     elif choice == "5":
         nc.notes_view()
-    # elif choice == "6":
-    #     filter_notes()
+    elif choice == "6":
+        nc.notes_filter_bydate()
     elif choice == "7":
         break
     else:
