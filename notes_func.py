@@ -24,4 +24,14 @@ def notes_add():
     notes_save(notes)
     print("\nЗаметка добавлена")
     
+def notes_del():
+    note_id = int(input("\nID заметки: "))
+    for i, note in enumerate(notes):
+        if note["id"] == note_id:
+            del notes[i]
+            notes_save(notes)
+            print("\nЗаметка удалена")
+            return
+    print("\nЗаметка не найдена")
+    
 notes = notes_load()

@@ -7,8 +7,8 @@ while True:
         nc.notes_add()
     # elif choice == "2":
     #     edit_note()
-    # elif choice == "3":
-    #     delete_note()
+    elif choice == "3":
+        nc.notes_del()
     # elif choice == "4":
     #     list_notes()
     # elif choice == "5":
