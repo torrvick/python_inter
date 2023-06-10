@@ -17,7 +17,7 @@ def notes_save(notes):
 
 def notes_add():
     title = input("Заголовок: ")
-    body = input("Заметка: ")
+    body = input("Текст: ")
     timestamp = datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S")
     note = {"id": len(notes) + 1, "title": title, "body": body, "timestamp": timestamp}
     notes.append(note)
@@ -36,11 +36,14 @@ def notes_del():
 
 def notes_list():
     print("")
-    for note in notes:
-        print(f"ID: {note['id']}, Заголовок: {note['title']}, Время: {note['timestamp']}")
+    if len(notes) == 0:
+        print("Заметок нет")
+    else:
+        for note in notes:
+            print(f"ID: {note['id']}, {note['title']}, Время: {note['timestamp']}")
         
 def notes_edit():
-    note_id = int(input("ID заметки: "))
+    note_id = int(input("\nID заметки: "))
     for note in notes:
         if note["id"] == note_id:
             title = input("Новый заголовок (пустой ввод - оставить без изменений): ")
@@ -52,6 +55,14 @@ def notes_edit():
             note["timestamp"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             notes_save(notes)
             print("\nЗаметка отредактирована")
+            return
+    print("\nЗаметка не найдена")
+
+def notes_view():
+    note_id = int(input("\nID заметки: "))
+    for note in notes:
+        if note["id"] == note_id:
+            print(f"Заголовок: {note['title']}\nТекст: {note['body']}\nВремя: {note['timestamp']}")
             return
     print("\nЗаметка не найдена")
 
