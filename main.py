@@ -9,8 +9,8 @@ while True:
     #     edit_note()
     elif choice == "3":
         nc.notes_del()
-    # elif choice == "4":
-    #     list_notes()
+    elif choice == "4":
+        nc.notes_list()
     # elif choice == "5":
     #     view_note()
     # elif choice == "6":
@@ -19,3 +19,6 @@ while True:
         break
     else:
         print("\nПроверьте правильность ввода")
+        
+    input("\nНажмите Enter для продолжения")
+    

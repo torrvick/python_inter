@@ -5,7 +5,7 @@ FILE = "notes.json"
 
 def notes_load():
     try:
-        with open(FILE, "r") as file:
+        with open(FILE, "r", encoding='utf8') as file:
             notes = json.load(file)
     except FileNotFoundError:
         notes = []
@@ -33,5 +33,10 @@ def notes_del():
             print("\nЗаметка удалена")
             return
     print("\nЗаметка не найдена")
-    
+
+def notes_list():
+    print("")
+    for note in notes:
+        print(f"ID: {note['id']}, Заголовок: {note['title']}, Время: {note['timestamp']}")
+
 notes = notes_load()
